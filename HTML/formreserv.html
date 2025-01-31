@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POG GROUP - Reserva de Vuelo</title>
+    <link rel="stylesheet" href="/CSS/formreserv.css">
+    <link rel="stylesheet" href="/CSS/stylesdefault.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <header>
+        <h1>POG</h1>
+    </header>
+    <nav>
+        <a href="sobrenosotros.html">Inicio</a>
+        <a href="flota.html">Flota</a>
+        <a href="servicios.html">Servicios</a>
+        <a href="formreserv.html">Reservar</a>
+        <a href="index.html">Iniciar sesión</a>
+    </nav>
+   
+    <br>
+
+    <form action="gracias.html" method="GET">
+        <h2>Reserva tu Vuelo</h2>
+    
+        <label for="flight-type">Tipo de Vuelo:</label>
+        <select id="flight-type" name="flight-type" required>
+            <option value="" disabled selected>Seleccione un tipo de vuelo</option>
+            <option value="pasajeros">Vuelo de Pasajeros</option>
+            <option value="carga">Vuelo de Carga</option>
+        </select>
+        <br><br>
+        
+        <label for="departure-date">Fecha de Salida:</label>
+        <input type="date" id="departure-date" name="departure-date" value="2025-02-01" required>
+        <br><br>
+
+        <label for="return-date">Fecha de Regreso:</label>
+        <input type="date" id="return-date" name="return-date" value="2025-02-06" required>
+        <br><br>
+        
+        <label for="departure-airport">Aeropuerto de Salida:</label>
+        <select id="departure-airport" name="departure-airport" required>
+            <option value="" disabled selected>Seleccione un aeropuerto</option>
+            <option value="irun">Aeropuerto de Donostia/San Sebastian</option>
+            <option value="bilbao">Aeropuerto de Bilbao</option>
+        </select>
+        <br><br>
+
+        <label for="arrival-airport">Aeropuerto de Destino  :</label>
+        <select id="arrival-airport" name="arrival-airport" required>
+            <option value="" disabled selected>Seleccione un aeropuerto de destino</option>
+            <option value="madrid">Aeropuerto de Madrid</option>
+            <option value="paris">Aeropuerto de París</option>
+            <option value="nyc">Aeropuerto de Nueva York</option>
+        </select>
+        <br><br>
+        
+        <label for="passengers">Número de Pasajeros:</label>
+        <input type="number" id="passengers" name="passengers" min="1" max="100" required>
+        <br><br>
+
+        <label for="baggage">Cantidad de Equipaje (kg):</label>
+        <input type="number" id="baggage" name="baggage" min="1" max="500" required>
+        <br><br>
+
+        <button type="submit">Reservar Vuelo</button>
+    </form>
+    
+</body>
+</html>
