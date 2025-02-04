@@ -1,45 +1,66 @@
-h1{
+
+
+h1 {
     color: white;
 }
-.aviones {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    padding: 30px;
-    margin-top: 20px;
-    background: black;
+
+body {
+  background-image: url(/IMG/imagen.png);
+  background-size: cover; /* Ajusta la imagen para cubrir toda la pantalla */
+  background-position: center; /* Centra la imagen */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  background-attachment: fixed; /* Hace que la imagen se mantenga fija al hacer scroll */
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
 }
 
-.aviones .avuno, .aviones .avdos, .aviones .avtres, .aviones .avcuatro, 
-.aviones .avcinco, .aviones .avseis, .aviones .avsiete, .aviones .avocho, 
-.aviones .avnueve {
+
+
+/* Contenedor de aviones */
+.aviones {
+    display: grid;
+    place-items: center;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    padding-bottom: 0px;
+    margin-top: 20px;
+
+    width: 85%;
+}
+
+.aviones-container {
+  display: grid;
+  place-items: center;
+  height: 20vh;
+}
+
+/* Tarjetas de aviones */
+.aviones div {
     background-color: white;
     padding: 20px;
     border-radius: 12px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     text-align: center;
     transition: transform 0.15s ease, box-shadow 0.3s ease;
     color: black;
+    height: 80%;
 }
 
-.aviones .avuno:hover, .aviones .avdos:hover, .aviones .avtres:hover, 
-.aviones .avcuatro:hover, .aviones .avcinco:hover, .aviones .avseis:hover, 
-.aviones .avsiete:hover, .aviones .avocho:hover, .aviones .avnueve:hover {
-    transform: scale(1.01);
+.aviones div:hover {
+    transform: scale(1.02);
 }
 
+/* Títulos de aviones */
 .aviones h3 {
     font-size: 1.5rem;
     margin-bottom: 10px;
-    color: black;
     text-transform: uppercase;
     letter-spacing: 1px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
 }
 
+/* Imágenes */
 .aviones img {
     border-radius: 10px;
     margin: 15px;
@@ -48,21 +69,7 @@ h1{
     height: auto;
 }
 
-.aviones button {
-    background-color: black;
-    color: white;
-    border: none;
-    border-radius: 30px;
-    font-size: 16px;
-    letter-spacing: 1px;
-    margin-top: 15px;
-    transition: transform 0.2s ease;
-}
-
-.aviones button:hover {
-    transform: scale(1.1);
-}
-
+/* Botón */
 .show-details {
     padding: 12px 25px;
     background-color: black;
@@ -72,24 +79,44 @@ h1{
     cursor: pointer;
     font-size: 16px;
     margin-top: 20px;
-    transition: background-color 0.3s ease;
+    transition: transform 0.2s ease, background-color 0.3s ease;
 }
 
 .show-details:hover {
-    background-color: black;
-}
-
-.more-info {
-    display: none;
-    padding: 20px;
-    background-color: white;
+    background-color: grey;
     color: black;
-    margin-top: 10px;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    border: 2px solid black;
+    transform: scale(1.05);
 }
 
-body{
-    background-color: black;
+
+/* Asegurar que la información esté visible desde el principio */
+.more-info {
+  display: block; /* Cambiado de 'none' a 'block' */
+  opacity: 0; /* Ocultar la información con opacidad */
+  transition: opacity 0.3s ease; /* Añadir transición suave */
+}
+
+/* Cuando se hace clic, aumentar el ancho del contenedor y mostrar la información */
+.aviones div.expanded .more-info {
+  opacity: 1; /* Mostrar la información con opacidad */
+}
+
+.aviones div.expanded {
+  height: 90%; /* Expandir el contenedor cuando se hace clic */
+  transition: width 0.3s ease; /* Animación suave para el cambio de tamaño */
+}
+
+
+
+/* Responsive */
+@media screen and (max-width: 1024px) {
+    .aviones {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .aviones {
+        grid-template-columns: 1fr;
+    }
 }

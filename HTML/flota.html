@@ -15,17 +15,26 @@
         <h1>P.O.G</h1>
     </header>
     <nav>
-    <a href="sobrenosotros.html">Inicio</a>
-    <a href="flota.html">Flota</a>
-    <a href="servicios.html">Servicios</a>
-    <a href="formreserv.html">Reservar</a>
-    <a href="index.html">Iniciar sesion</a>
+        <a href="index.html">Inicio</a>
+        <a href="flota.html">Flota</a>
+        <a href="servicios.html">Servicios</a>
+        <a href="formreserv.html">Reservar</a>
+        <button class="cssbuttons-io-button" onclick="window.location.href='iniciosesion.html'">
+            Iniciar sesión
+            <div class="icon">
+                <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0h24v24H0z" fill="none"></path>
+                    <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" fill="currentColor"></path>
+                </svg>
+            </div>
+        </button>
     </nav>
     <br>
 
     <h1>Nuestra flota de aviones</h1>
     
-    <div class="aviones">
+    <div class="aviones-container">
+ <div class="aviones">
         <div class="avuno">
             <h3>Airbus A320</h3>
             <img src="/IMG/avuno.jpg" alt="habmultiple">
@@ -156,17 +165,29 @@
         </div>
     </div>
 
+    </div>
+   
+  
+  
+
     <script>
-            document.querySelectorAll('.show-details').forEach(button => {
-        button.addEventListener('click', function () {
-            const moreInfo = this.nextElementSibling;
-            if (moreInfo.style.display === 'block') {
-                moreInfo.style.display = 'none';
-            } else {
-                moreInfo.style.display = 'block';
-            }
-        });
+    document.querySelectorAll('.show-details').forEach(button => {
+    button.addEventListener('click', function () {
+        const moreInfo = this.nextElementSibling;
+        const container = this.closest('div'); // Obtener el contenedor del avión
+
+        if (container.classList.contains('expanded')) {
+            // Si ya está expandido, colapsarlo
+            container.classList.remove('expanded');
+            moreInfo.style.opacity = '0'; // Hacer la información invisible
+        } else {
+            // Si no está expandido, expandirlo
+            container.classList.add('expanded');
+            moreInfo.style.opacity = '1'; // Hacer la información visible
+        }
     });
+});
+
     </script>
 
 </body>

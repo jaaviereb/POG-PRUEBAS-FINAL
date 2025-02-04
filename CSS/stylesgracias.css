@@ -40,3 +40,46 @@
 .confirmacion a:hover {
     background-color: #008cba;
 }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .confirmacion {
+        width: 90%;
+        padding: 20px;
+        margin-top: 10%;
+    }
+
+    .confirmacion h2 {
+        font-size: 1.6rem;
+    }
+
+    .confirmacion p {
+        font-size: 1rem;
+    }
+
+    .confirmacion a {
+        font-size: 1rem;
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .confirmacion {
+        width: 95%;
+        padding: 15px;
+        margin-top: 15%;
+    }
+
+    .confirmacion h2 {
+        font-size: 1.4rem;
+    }
+
+    .confirmacion p {
+        font-size: 0.9rem;
+    }
+
+    .confirmacion a {
+        font-size: 0.9rem;
+        padding: 6px 14px;
+    }
+}

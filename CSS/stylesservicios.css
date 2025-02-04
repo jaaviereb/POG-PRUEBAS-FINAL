@@ -2,6 +2,7 @@ h1{
     color: white;
 }
 
+/* Contenedor del tipo de servicios */
 .servicios {
     display: flex;
     justify-content: space-around;
@@ -47,3 +48,11 @@ h1{
 body{
     background-color: black;
 }
+
+/* Responsive */
+@media screen and (max-width: 1024px) {
+    .servicios div {
+        width: 90%;
+    }
+}
+
