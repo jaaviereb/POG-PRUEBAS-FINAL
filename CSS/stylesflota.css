@@ -93,7 +93,63 @@ body {
   height: 90%; /* Expandir el contenedor cuando se hace clic */
   transition: width 0.3s ease; /* Animación suave para el cambio de tamaño */
 }
+.button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #00b1e7;
+    border: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 0px 2px white;
+    cursor: pointer;
+    transition-duration: 0.3s;
+    overflow: hidden;
+    position: fixed; /* Fijar el botón en la pantalla */
+    bottom: 20px; /* Espacio desde el borde inferior */
+    right: 20px; /* Espacio desde el borde derecho */
+    z-index: 1000; /* Asegurarse de que el botón esté por encima de otros elementos */
+}
 
+.svgIcon {
+    width: 12px;
+    transition-duration: 0.3s;
+}
+
+.svgIcon path {
+    fill: white;
+}
+
+.button:hover {
+    width: 100px;
+    border-radius: 25px;
+    transition-duration: 0.3s;
+    background-color: #00b1e7;
+    align-items: center;
+}
+
+.button:hover .svgIcon {
+    transition-duration: 0.3s;
+    transform: translateY(-200%);
+}
+
+.button::before {
+    position: absolute;
+    bottom: -20px;
+    content: "Ir arriba";
+    color: white;
+    font-size: 0px;
+    transition-duration: 0.3s;
+}
+
+.button:hover::before {
+    font-size: 13px;
+    opacity: 1;
+    bottom: unset;
+    transition-duration: 0.3s;
+}
 
 /* Responsive */
 @media screen and (max-width: 1024px) {
