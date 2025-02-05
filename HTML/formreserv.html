@@ -1,15 +1,76 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>POG GROUP - Reserva de Vuelo</title>
-    <link rel="stylesheet" href="/CSS/formreserv.css">
+    <link rel="stylesheet" href="/CSS/stylesformserv.css">
     <link rel="stylesheet" href="/CSS/stylesdefault.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        // Función para mostrar los campos según el tipo de vuelo
+        function updateFormFields() {
+            var flightType = document.getElementById("flight-type").value;
+            var passengersFields = document.getElementById("passengers-fields");
+            var baggageFields = document.getElementById("baggage-fields");
+            var cargoFields = document.getElementById("cargo-fields");
+
+            // Reiniciar la visibilidad de los campos
+            passengersFields.style.display = "none";
+            baggageFields.style.display = "none";
+            cargoFields.style.display = "none";
+
+            if (flightType === "pasajeros") {
+                passengersFields.style.display = "block";
+                baggageFields.style.display = "block";
+            } else if (flightType === "carga") {
+                cargoFields.style.display = "block";
+            }
+        }
+
+        // Función para manejar el envío del formulario y redirigir a gracias.html
+        function handleSubmit(event) {
+            event.preventDefault();
+
+            var flightType = document.getElementById("flight-type").value;
+            var valid = true;
+
+            // Verificación de los campos comunes
+            if (document.getElementById("flight-type").value === "" ||
+                document.getElementById("departure-date").value === "" ||
+                document.getElementById("return-date").value === "" ||
+                document.getElementById("departure-airport").value === "" ||
+                document.getElementById("arrival-airport").value === "") {
+                alert("Por favor, complete todos los campos requeridos.");
+                valid = false;
+            }
+
+            // Verificación de campos adicionales dependiendo del tipo de vuelo
+            if (flightType === "pasajeros") {
+                // Verificación de los campos de pasajeros y equipaje
+                var passengers = document.getElementById("passengers").value;
+                var baggage = document.getElementById("baggage").value;
+                if (passengers === "" || baggage === "") {
+                    alert("Por favor, complete el número de pasajeros y la cantidad de equipaje.");
+                    valid = false;
+                }
+            } else if (flightType === "carga") {
+                // Verificación del campo de carga
+                var cargo = document.getElementById("cargo").value;
+                if (cargo === "") {
+                    alert("Por favor, complete la cantidad de carga.");
+                    valid = false;
+                }
+            }
+
+            if (valid) {
+                // Redirigir a la página de gracias si todo es válido
+                window.location.href = "gracias.html";
+            }
+        }
+    </script>
 </head>
 <body>
-    
     <header>
         <h1>P.O.G</h1>
     </header>
@@ -32,11 +93,11 @@
    
     <br>
 
-    <form action="gracias.html" method="GET">
+    <form id="flight-form" onsubmit="handleSubmit(event)">
         <h2>Reserva tu Vuelo</h2>
     
         <label for="flight-type">Tipo de Vuelo:</label>
-        <select id="flight-type" name="flight-type" required>
+        <select id="flight-type" name="flight-type" onchange="updateFormFields()" required>
             <option value="" disabled selected>Seleccione un tipo de vuelo</option>
             <option value="pasajeros">Vuelo de Pasajeros</option>
             <option value="carga">Vuelo de Carga</option>
@@ -54,30 +115,51 @@
         <label for="departure-airport">Aeropuerto de Salida:</label>
         <select id="departure-airport" name="departure-airport" required>
             <option value="" disabled selected>Seleccione un aeropuerto</option>
-            <option value="irun">Aeropuerto de Donostia/San Sebastian</option>
+            <option value="irun">Aeropuerto de Donostia/San Sebastián</option>
             <option value="bilbao">Aeropuerto de Bilbao</option>
+            <option value="madrid">Aeropuerto Adolfo Suárez Madrid-Barajas</option>
+            <option value="barcelona">Aeropuerto de Barcelona-El Prat</option>
+            <option value="valencia">Aeropuerto de Valencia</option>
+            <option value="malaga">Aeropuerto de Málaga-Costa del Sol</option>
+            <option value="sevilla">Aeropuerto de Sevilla</option>
         </select>
         <br><br>
 
-        <label for="arrival-airport">Aeropuerto de Destino  :</label>
+        <label for="arrival-airport">Aeropuerto de Destino:</label>
         <select id="arrival-airport" name="arrival-airport" required>
             <option value="" disabled selected>Seleccione un aeropuerto de destino</option>
             <option value="madrid">Aeropuerto de Madrid</option>
-            <option value="paris">Aeropuerto de París</option>
-            <option value="nyc">Aeropuerto de Nueva York</option>
+            <option value="paris">Aeropuerto Charles de Gaulle (París)</option>
+            <option value="nyc">Aeropuerto John F. Kennedy (Nueva York)</option>
+            <option value="london">Aeropuerto de Heathrow (Londres)</option>
+            <option value="roma">Aeropuerto de Fiumicino (Roma)</option>
+            <option value="berlin">Aeropuerto de Berlín-Tegel</option>
+            <option value="tokyo">Aeropuerto Internacional de Narita (Tokio)</option>
         </select>
         <br><br>
         
-        <label for="passengers">Número de Pasajeros:</label>
-        <input type="number" id="passengers" name="passengers" min="1" max="100" required>
-        <br><br>
+        <!-- Campos específicos para vuelos de pasajeros -->
+        <div id="passengers-fields" style="display: none;">
+            <label for="passengers">Cantidad de Pasajeros:</label>
+            <input type="number" id="passengers" name="passengers" min="1" max="100" required>
+            <br><br>
+        </div>
 
-        <label for="baggage">Cantidad de Equipaje (kg):</label>
-        <input type="number" id="baggage" name="baggage" min="1" max="500" required>
-        <br><br>
+        <!-- Campos específicos para la cantidad de equipaje -->
+        <div id="baggage-fields" style="display: none;">
+            <label for="baggage">Cantidad de Equipaje (kg):</label>
+            <input type="number" id="baggage" name="baggage" min="1" max="500" required>
+            <br><br>
+        </div>
+
+        <!-- Campos específicos para vuelos de carga -->
+        <div id="cargo-fields" style="display: none;">
+            <label for="cargo">Cantidad de Carga (kg):</label>
+            <input type="number" id="cargo" name="cargo" min="1" max="5000" required>
+            <br><br>
+        </div>
 
         <button type="submit">Reservar Vuelo</button>
     </form>
-    
 </body>
 </html>

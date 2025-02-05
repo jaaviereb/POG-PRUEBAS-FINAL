@@ -2,6 +2,14 @@ h1{
     color: white;
 }
 
+body {
+    background-image: url(/IMG/imagen.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+  }
 /* Contenedor del tipo de servicios */
 .servicios {
     display: flex;
@@ -17,37 +25,38 @@ h1{
     background: white;
     padding: 20px;
     border-radius: 12px;
-    width: 45%;
-    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+    width: 34%;
     text-align: center;
     transition: transform 0.3s ease;
     color: black;
 }
+.pasajeros{
+    margin-right: -8%;
+}
+.carga{
+    margin-left: -8%;
+}
 
 /* Efecto hover en servicios */
 .servicios div:hover {
-    transform: scale(1.05);
+    transform: scale(1.02);
 }
 
 /* Imágenes dentro de servicios */
 .servicios img {
     width: 100%;
-    border-radius: 6px;
+    border-radius: 10px;
     margin-bottom: 15px;
 }
 
 /* Títulos en la sección de servicios */
 .servicios h3 {
-    color: black;
+    font-size: 1.5rem;
     margin-bottom: 10px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
 }
 
-body{
-    background-color: black;
-}
 
 /* Responsive */
 @media screen and (max-width: 1024px) {

@@ -1,20 +1,15 @@
-
-
 h1 {
     color: white;
 }
 
 body {
   background-image: url(/IMG/imagen.png);
-  background-size: cover; /* Ajusta la imagen para cubrir toda la pantalla */
-  background-position: center; /* Centra la imagen */
-  background-repeat: no-repeat; /* Evita que la imagen se repita */
-  background-attachment: fixed; /* Hace que la imagen se mantenga fija al hacer scroll */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   margin: 0;
-  font-family: 'Roboto', sans-serif;
 }
-
-
 
 /* Contenedor de aviones */
 .aviones {
@@ -24,7 +19,6 @@ body {
     gap: 30px;
     padding-bottom: 0px;
     margin-top: 20px;
-
     width: 85%;
 }
 
@@ -72,7 +66,7 @@ body {
 /* Botón */
 .show-details {
     padding: 12px 25px;
-    background-color: black;
+    background-color: #00b1e7;
     color: white;
     border: none;
     border-radius: 30px;
@@ -91,21 +85,14 @@ body {
 
 /* Asegurar que la información esté visible desde el principio */
 .more-info {
-  display: block; /* Cambiado de 'none' a 'block' */
-  opacity: 0; /* Ocultar la información con opacidad */
-  transition: opacity 0.3s ease; /* Añadir transición suave */
-}
-
-/* Cuando se hace clic, aumentar el ancho del contenedor y mostrar la información */
-.aviones div.expanded .more-info {
-  opacity: 1; /* Mostrar la información con opacidad */
+  display: block;
+  opacity: 0;
 }
 
 .aviones div.expanded {
   height: 90%; /* Expandir el contenedor cuando se hace clic */
   transition: width 0.3s ease; /* Animación suave para el cambio de tamaño */
 }
-
 
 
 /* Responsive */

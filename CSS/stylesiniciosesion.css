@@ -61,9 +61,10 @@ form input {
     background-color: #ffffff;
 }
 
-form button {
+form button, .back-button {
     margin-top: 20px;
     padding: 12px;
+    width: 100%;
     background-color: #000000;
     color: white;
     border: none;
@@ -73,6 +74,7 @@ form button {
     transition: background-color 0.2s ease;
 }
 
-form button:hover {
+form button:hover, .back-button:hover {
     background-color: #303030;
 }
+
