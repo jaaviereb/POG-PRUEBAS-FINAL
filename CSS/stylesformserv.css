@@ -205,7 +205,7 @@ button {
     content: "Ir arriba";
     color: white;
     font-size: 0px;
-    transition: all 0.3s ease; /* Asegúrate de que el pseudo-elemento también tenga transición */
+    transition: all 0.3s ease;
 }
 
 .buttonuno:hover::before {
@@ -213,6 +213,20 @@ button {
     opacity: 1;
     bottom: unset;
     transition-duration: 0.3s;
+}
+footer {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.572);
+    padding: 10px;
+    text-align: center;
+    margin-top: 49px;
+}
+.footerclass{
+    color: white;
+    background-color: rgba(0, 0, 0, 0.572);
+    padding: 10px;
+    text-align: center;
+    margin-top: 335px;
 }
 
 

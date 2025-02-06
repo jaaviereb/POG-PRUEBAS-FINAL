@@ -57,6 +57,14 @@ body {
     letter-spacing: 1px;
 }
 
+footer {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.572);
+    padding: 10px;
+    text-align: center;
+    margin-top: 80px;
+}
+
 
 /* Responsive */
 @media screen and (max-width: 1024px) {
