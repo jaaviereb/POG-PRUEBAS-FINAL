@@ -65,6 +65,16 @@ nav a:hover {
 }
 
 
+
+footer {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.572);
+    padding: 10px;
+    text-align: center;
+    margin-top: auto;
+    z-index: 10;
+}
+
 /* From Uiverse.io by adamgiebl */ 
 .cssbuttons-io-button {
     background: #00b1e7;

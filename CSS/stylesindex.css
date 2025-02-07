@@ -68,6 +68,9 @@ nav {
     color: black;
     z-index: 2;
 }
+footer a{
+    color: white;
+}
 
 /* Responsive */
 @media (max-width: 480px) {  

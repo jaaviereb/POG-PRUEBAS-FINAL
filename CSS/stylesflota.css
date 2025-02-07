@@ -157,6 +157,9 @@ footer {
     text-align: center;
     margin-top: 1600px;
 }
+footer a{
+    color: white;
+}
 
 /* Responsive */
 @media screen and (max-width: 1024px) {
