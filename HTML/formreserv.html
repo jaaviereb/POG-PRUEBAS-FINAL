@@ -8,17 +8,46 @@
     <link rel="stylesheet" href="/CSS/stylesdefault.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <script>
-        // Función para mostrar los campos según el tipo de vuelo
+        const aircraftData = {
+            pasajeros: [
+                { name: "Airbus A320", capacity: 49 },
+                { name: "Airbus A380", capacity: 150 },
+                { name: "Cessna 172", capacity: 4 },
+                { name: "CRJ 900", capacity: 20 },
+                { name: "ERJ190", capacity: 20 }
+            ],
+            carga: [
+                { name: "Airbus A340", capacity: 44000 },
+                { name: "Boeing 747 Cargo ‘DreamLifter’", capacity: 140000 },
+                { name: "Boeing 737", capacity: 20000 },
+                { name: "C-130", capacity: 20000 }
+            ]
+        };
+
         function updateFormFields() {
             var flightType = document.getElementById("flight-type").value;
             var passengersFields = document.getElementById("passengers-fields");
             var baggageFields = document.getElementById("baggage-fields");
             var cargoFields = document.getElementById("cargo-fields");
-
-            // Reiniciar la visibilidad de los campos
+            var aircraftSelect = document.getElementById("aircraft-type");
+            var aircraftContainer = document.getElementById("aircraft-container");
+            
             passengersFields.style.display = "none";
             baggageFields.style.display = "none";
             cargoFields.style.display = "none";
+            aircraftContainer.style.display = "none";
+            aircraftSelect.innerHTML = "<option value='' disabled selected>Seleccione un avión</option>";
+
+            if (flightType) {
+                aircraftContainer.style.display = "block";
+                aircraftData[flightType].forEach(aircraft => {
+                    let option = document.createElement("option");
+                    option.value = aircraft.name;
+                    option.textContent = aircraft.name;
+                    option.dataset.capacity = aircraft.capacity;
+                    aircraftSelect.appendChild(option);
+                });
+            }
 
             if (flightType === "pasajeros") {
                 passengersFields.style.display = "block";
@@ -28,7 +57,23 @@
             }
         }
 
-        // Función para manejar el envío del formulario y redirigir a gracias.html
+        function updateCapacityLimit() {
+            var flightType = document.getElementById("flight-type").value;
+            var aircraftSelect = document.getElementById("aircraft-type");
+            var selectedAircraft = aircraftSelect.options[aircraftSelect.selectedIndex];
+            var maxCapacity = selectedAircraft.dataset.capacity;
+
+            if (flightType === "pasajeros") {
+                document.getElementById("passengers").max = maxCapacity;
+            } else if (flightType === "carga") {
+                document.getElementById("cargo").max = maxCapacity;
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("aircraft-type").addEventListener("change", updateCapacityLimit);
+        });
+
         function handleSubmit(event) {
             event.preventDefault();
 
@@ -69,26 +114,6 @@
             }
         }
 
-        document.addEventListener("DOMContentLoaded", function () {
-    const scrollButtonuno = document.getElementById("scrollToTop");
-
-    // Mostrar u ocultar el botón según el scroll
-    window.addEventListener("scroll", function () {
-        if (document.documentElement.scrollTop > 100) { // Se muestra antes (200px)
-            scrollButtonuno.style.display = "flex";
-        } else {
-            scrollButtonuno.style.display = "none";
-        }
-    });
-
-    // Función para subir suavemente al inicio de la página
-    scrollButtonuno.addEventListener("click", function () {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth", // Desplazamiento suave hacia arriba
-        });
-    });
-});
     </script>
 </head>
 <body>
@@ -111,26 +136,16 @@
             </div>
         </button>
     </nav>
-   
-    <br>
-
+    <br><br>
+    <button class="buttonuno" id="scrollToTop">
+        <svg class="svgIcon" viewBox="0 0 384 512">
+          <path
+            d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"
+          ></path>
+        </svg>
+    </button>
     <form id="flight-form" onsubmit="handleSubmit(event)">
         <h2>Reserva tu Vuelo</h2>
-        <button class="buttonuno" id="scrollToTop">
-            <svg class="svgIcon" viewBox="0 0 384 512">
-              <path
-                d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"
-              ></path>
-            </svg>
-        </button>
-    
-        <label for="flight-type">Tipo de Vuelo:</label>
-        <select id="flight-type" name="flight-type" onchange="updateFormFields()" required>
-            <option value="" disabled selected>Seleccione un tipo de vuelo</option>
-            <option value="pasajeros">Vuelo de Pasajeros</option>
-            <option value="carga">Vuelo de Carga</option>
-        </select>
-        <br><br>
         
         <label for="departure-date">Fecha de Salida:</label>
         <input type="date" id="departure-date" name="departure-date" value="2025-02-01" required>
@@ -165,25 +180,37 @@
             <option value="tokyo">Aeropuerto Internacional de Narita (Tokio)</option>
         </select>
         <br><br>
-        
-        <!-- Campos específicos para vuelos de pasajeros -->
-        <div id="passengers-fields" style="display: none;">
-            <label for="passengers">Cantidad de Pasajeros:</label>
-            <input type="number" id="passengers" name="passengers" min="1" max="100" required>
+
+        <label for="flight-type">Tipo de Vuelo:</label>
+        <select id="flight-type" name="flight-type" onchange="updateFormFields()" required>
+            <option value="" disabled selected>Seleccione un tipo de vuelo</option>
+            <option value="pasajeros">Vuelo de Pasajeros</option>
+            <option value="carga">Vuelo de Carga</option>
+        </select>
+        <br><br>
+
+        <div id="aircraft-container" style="display: none;">
+            <label for="aircraft-type">Tipo de Avión:</label>
+            <select id="aircraft-type" name="aircraft-type" required>
+            </select>
             <br><br>
         </div>
 
-        <!-- Campos específicos para la cantidad de equipaje -->
+        <div id="passengers-fields" style="display: none;">
+            <label for="passengers">Cantidad de Pasajeros:</label>
+            <input type="number" id="passengers" name="passengers" min="1" required>
+            <br><br>
+        </div>
+
         <div id="baggage-fields" style="display: none;">
             <label for="baggage">Cantidad de Equipaje (kg):</label>
             <input type="number" id="baggage" name="baggage" min="1" max="500" required>
             <br><br>
         </div>
 
-        <!-- Campos específicos para vuelos de carga -->
         <div id="cargo-fields" style="display: none;">
             <label for="cargo">Cantidad de Carga (kg):</label>
-            <input type="number" id="cargo" name="cargo" min="1" max="5000" required>
+            <input type="number" id="cargo" name="cargo" min="1" required>
             <br><br>
         </div>
 
@@ -197,11 +224,13 @@
               </div>
             </div>
             <span>Reservar vuelo</span>
-          </button>
-              </form>
-              <footer>
-                <p>POG está bajo licencia CC BY-NC-ND 4.0© 2 por P </p>
-                <a href="xslt.xslt">Descargar XSLT</a>
-            </footer>
+        </button>
+    </form>
+    <br><br>
+    <footer>
+        <p>POG está bajo licencia CC BY-NC-ND 4.0© 2 por P </p>
+        <a href="xslt.xslt">Descargar XSLT</a>
+    </footer>
 </body>
 </html>
+
