@@ -1,0 +1,181 @@
+h1 {
+    color: white;
+}
+
+body {
+  background-image: url(/IMG/imagen.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  margin: 0;
+}
+
+/* Contenedor de aviones */
+.aviones {
+    display: grid;
+    place-items: center;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    padding-bottom: 0px;
+    margin-top: 20px;
+    width: 85%;
+}
+
+.aviones-container {
+  display: grid;
+  place-items: center;
+  height: 20vh;
+}
+
+/* Tarjetas de aviones */
+.aviones div {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.15s ease, box-shadow 0.3s ease;
+    color: black;
+    height: 80%;
+}
+
+.aviones div:hover {
+    transform: scale(1.02);
+}
+
+/* Títulos de aviones */
+.aviones h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Imágenes */
+.aviones img {
+    border-radius: 10px;
+    margin: 15px;
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+}
+
+/* Botón */
+.show-details {
+    padding: 12px 25px;
+    background-color: #00b1e7;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.show-details:hover {
+    background-color: grey;
+    color: black;
+    transform: scale(1.05);
+}
+
+
+/* Asegurar que la información esté visible desde el principio */
+.more-info {
+  display: block;
+  opacity: 0;
+}
+
+.aviones div.expanded {
+  height: 90%; /* Expandir el contenedor cuando se hace clic */
+  transition: width 0.3s ease; /* Animación suave para el cambio de tamaño */
+}
+.button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #00b1e7;
+    border: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 0px 2px white;
+    cursor: pointer;
+    transition-duration: 0.3s;
+    overflow: hidden;
+    position: fixed; /* Fijar el botón en la pantalla */
+    bottom: 20px; /* Espacio desde el borde inferior */
+    right: 20px; /* Espacio desde el borde derecho */
+    z-index: 1000; /* Asegurarse de que el botón esté por encima de otros elementos */
+}
+
+.svgIcon {
+    width: 12px;
+    transition-duration: 0.3s;
+}
+
+.svgIcon path {
+    fill: white;
+}
+
+.button:hover {
+    width: 100px;
+    border-radius: 25px;
+    transition-duration: 0.3s;
+    background-color: #00b1e7;
+    align-items: center;
+}
+
+.button:hover .svgIcon {
+    transition-duration: 0.3s;
+    transform: translateY(-200%);
+}
+
+.button::before {
+    position: absolute;
+    bottom: -20px;
+    content: "Ir arriba";
+    color: white;
+    font-size: 0px;
+    transition-duration: 0.3s;
+}
+
+.button:hover::before {
+    font-size: 13px;
+    opacity: 1;
+    bottom: unset;
+    transition-duration: 0.3s;
+}
+footer {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.572);
+    padding: 10px;
+    text-align: center;
+    margin-top: 1600px;
+}
+footer a{
+    color: white;
+}
+
+/* Responsive */
+@media screen and (max-width: 1024px) {
+    .aviones {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    footer{
+        margin-top: 2800px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .aviones {
+        grid-template-columns: 1fr;
+    }
+    footer{
+        margin-top: 5150px;
+    }
+}
