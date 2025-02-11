@@ -1,0 +1,320 @@
+form {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+form h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+    color: #00c3ff;
+}
+
+form label {
+    display: block;
+    font-size: 1rem;
+    margin: 10px 0 5px;
+    color: #333;
+}
+
+form input, form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: #fff;
+    color: #333;
+    box-sizing: border-box;
+}
+
+form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #00c3ff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+form button:hover {
+    background-color: #008cba;
+    transform: scale(1.05);
+}
+
+form input[type="number"]::-webkit-outer-spin-button,
+form input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+form input[type="date"]::-webkit-calendar-picker-indicator {
+    background-color: #00c3ff;
+    border-radius: 4px;
+}
+
+.confirmacion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    margin: 20px auto;
+    max-width: 600px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 6%;
+    text-align: center;
+}
+
+.confirmacion h2 {
+    color: #00c3ff;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.confirmacion p {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.confirmacion a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #00c3ff;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.confirmacion a:hover {
+    background-color: #008cba;
+}
+
+button {
+    font-family: inherit;
+    font-size: 20px;
+    background: royalblue;
+    color: white;
+    padding: 0.7em 1em;
+    padding-left: 0.9em;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    border: none;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  
+  button span {
+    display: block;
+    margin-left: 0.3em;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  button svg {
+    display: block;
+    transform-origin: center center;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  button:hover .svg-wrapper {
+    animation: fly-1 0.6s ease-in-out infinite alternate;
+  }
+  
+  button:hover svg {
+    transform: translateX(1.2em) rotate(45deg) scale(1.1);
+  }
+  
+  button:hover span {
+    transform: translateX(5em);
+  }
+  
+  button:active {
+    transform: scale(0.95);
+  }
+  
+  @keyframes fly-1 {
+    from {
+      transform: translateY(0.1em);
+    }
+  
+    to {
+      transform: translateY(-0.1em);
+    }
+  }
+  
+  .buttonuno {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #00b1e7;
+    border: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 0px 2px white;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Transición de todos los cambios */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+.svgIcon {
+    width: 12px;
+    transition-duration: 0.3s;
+}
+
+.svgIcon path {
+    fill: white;
+}
+.buttonuno:hover {
+    width: 100px;
+    border-radius: 25px;
+    background-color: #00b1e7;
+    align-items: center;
+}
+
+
+
+
+.buttonuno:hover .svgIcon {
+    transform: translateY(-200%);
+}
+
+.buttonuno::before {
+    position: absolute;
+    bottom: -20px;
+    content: "Ir arriba";
+    color: white;
+    font-size: 0px;
+    transition: all 0.3s ease;
+}
+
+.buttonuno:hover::before {
+    font-size: 13px;
+    opacity: 1;
+    bottom: unset;
+    transition-duration: 0.3s;
+}
+footer {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.572);
+    padding: 10px;
+    text-align: center;
+    margin-top: 49px;
+}
+.footerclass{
+    color: white;
+    background-color: rgba(0, 0, 0, 0.572);
+    padding: 10px;
+    text-align: center;
+    margin-top: 315px;
+}
+footer a{
+    color: white;
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+    form {
+        width: 90%;
+        padding: 15px;
+    }
+
+    form h2 {
+        font-size: 1.5rem;
+    }
+
+    form input,
+    form select {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+
+    form button {
+        font-size: 1rem;
+        padding: 10px;
+    }
+    .confirmacion {
+        width: 90%;
+        padding: 20px;
+        margin-top: 10%;
+    }
+
+    .confirmacion h2 {
+        font-size: 1.6rem;
+    }
+
+    .confirmacion p {
+        font-size: 1rem;
+    }
+
+    .confirmacion a {
+        font-size: 1rem;
+        padding: 8px 16px;
+    }
+}
+
+
+@media (max-width: 480px) {
+    form {
+        width: 95%;
+        padding: 10px;
+    }
+
+    form h2 {
+        font-size: 1.3rem;
+    }
+
+    form label {
+        font-size: 0.9rem;
+    }
+
+    form input,
+    form select {
+        font-size: 0.85rem;
+        padding: 6px;
+    }
+
+    form button {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+    .confirmacion {
+        width: 95%;
+        padding: 15px;
+        margin-top: 15%;
+    }
+
+    .confirmacion h2 {
+        font-size: 1.4rem;
+    }
+
+    .confirmacion p {
+        font-size: 0.9rem;
+    }
+
+    .confirmacion a {
+        font-size: 0.9rem;
+        padding: 6px 14px;
+    }
+}
